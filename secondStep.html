@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration form</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="secondConteiner">
+        <img src="https://s7d2.scene7.com/is/image/honeywell/ConnectedBuildingThoughtLeadership1424x950-1?wid=1000&hei=668" id="img" />
+        <div id="form">
+            <div class="header">
+                <div class="divIcon">
+                    <img class="icon" src="https://ddo0fzhfvians.cloudfront.net/uploads/icons/png/18591605221552994182-512.png" />
+                </div>
+                <legend class="step">Step 2/3</legend>
+                <legend class="about">Choose a package</legend><br />
+
+                <div class="second">
+                    <input class="email" id="email" type="email" placeholder="Your email address..." required><br/><br/>
+                    <input class="pass" id="pass" type="password" placeholder="Password..." required><br/><br/>
+                    <input class="pass" id="repPass" type="password" placeholder="Repeat password..." required><br/><br/>
+                    <input class="radio" id="standard" name="radioButton" type="radio"><label> Standard Package</label><br/><br/>
+                    <input class="radio" id="premium" name="radioButton" type="radio"><label> Premium Package</label><br/><br/>
+                    <button class="prev"><a href="index.html">Previous</a></button>
+                    <button class="next" onclick="validateSecondStepFields()"><a id="link">Next</a></button>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <script type="text/javascript" src='secondStep.js'></script>
+</body>
+
+</html>

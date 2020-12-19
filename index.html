@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration form</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="conteiner">
+        <img src="https://s7d2.scene7.com/is/image/honeywell/ConnectedBuildingThoughtLeadership1424x950-1?wid=1000&hei=668" id="img" />
+        <div id="form">
+            <div class="header">
+                <div class="divIcon">
+                    <img class="icon" src="https://image.shutterstock.com/image-vector/person-icon-260nw-282598823.jpg" />
+                </div>
+                <legend class="step">Step 1/3</legend>
+                <legend class="about">Tell us who you are</legend><br />
+
+                <div class="main">
+                    <input class="info" id="name" type="text" placeholder="First name..." required><br /> <br />
+                    <input class="info" id="surName" type='text' placeholder="Last name..." required><br /> <br />
+                    <select class="countries" id="country">
+                        <option disabled selected>Choose your country</option>
+                    </select><br /> <br />
+                    <input class="info" id="city" type='text' placeholder="City..." required><br /> <br />
+                    <input class="info" id="address" type='text' placeholder="Address..." required><br /> <br />
+                    <input class="info" id="postCode" type='text' placeholder="Postal code..." required><br /> <br />
+                    <input id="fillData" type="checkbox" onchange="useFillData()"><label><b>Use filled data for shipping</b></label><br /> <br />
+                    <select class="countries" id="shippingCountry">
+                        <option id="choose" disabled selected>Choose shipping country</option>
+                    </select><br /> <br />
+                    <input class="info" id="shippingCity" type='text' placeholder="Shipping city..." required><br /> <br />
+                    <input class="info" id="shippingAddress" type='text' placeholder="Shipping address..." required><br /> <br />
+                    <input class="info" id="shippingPostCode" type='text' placeholder="Shipping postal code..." required><br /> <br />
+                    <button class="next" onclick="validateInfo()"><a id="link">Next</a></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src='firstStep.js'></script>
+    <!-- <script type="module" src='firstStep.js'></script> -->
+</body>
+
+</html>
