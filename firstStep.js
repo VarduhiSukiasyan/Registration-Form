@@ -748,8 +748,9 @@ function validateInfo() {
     validateCountry();
 
     if (Array.from(fields).every(field => field.className === "info")) {
-        // window.location.pathname = '/Registration-Form/secondStep.html';
-        window.location.pathname = '/C:/Users/Vardan/Desktop/Registration%20form/secondStep.html';
+        window.location.pathname = '/Registration-Form/secondStep.html';
+        // window.location.pathname = '/C:/Users/Vardan/Desktop/Registration%20form/secondStep.html';
+        // This is my local pathname
     }
 }
 

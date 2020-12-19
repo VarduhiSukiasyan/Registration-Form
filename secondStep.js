@@ -12,8 +12,9 @@ function validateSecondStepFields() {
     if (email.className !== "invalidEmail" && pass.className !== "invalidPass" &&
         repPass.className !== "invalidPass" && standard.className !== "invalidRadio" &&
         premium.className !== "invalidRadio") {
-        // window.location.pathname = '/Registration-Form/thirdStep.html';
-        window.location.pathname = window.location.pathname = '/C:/Users/Vardan/Desktop/Registration%20form/thirdStep.html';
+        window.location.pathname = '/Registration-Form/thirdStep.html';
+        // window.location.pathname = window.location.pathname = '/C:/Users/Vardan/Desktop/Registration%20form/thirdStep.html';
+        // This is my local pathname
     }
 }
 
