@@ -10,24 +10,24 @@
 
 <body>
     <div class="thirdConteiner">
-        <img src="https://s7d2.scene7.com/is/image/honeywell/ConnectedBuildingThoughtLeadership1424x950-1?wid=1000&hei=668" id="img" />
+        <img src="images/background.jpeg" id="img" />
         <div id="form">
             <div class="header">
                 <div class="divIcon">
-                    <img class="icon" src="https://icons-for-free.com/iconfiles/png/512/card+car+card+payment+shopping+card+icon+icon-1320085907830843503.png" />
+                    <img class="icon" src="images/cardIcon.png" />
                 </div>
                 <legend class="step">Step 3/3</legend>
                 <legend class="about">Fill your credit card details</legend><br />
 
                 <div class="third">
                     <div class="divLogo" id="divLogo">
-                        <input class="cardNumber" id="cardNumber" type="text" placeholder="xxxx xxxx xxxx xxxx" required onkeyup="validateCardNumber()">
+                        <input class="cardNumber" id="cardNumber" type="text" placeholder="xxxx xxxx xxxx xxxx" required onkeyup="validateCardNumber()" onkeypress="return isNumberKey(event)">
                     </div><br/>
                     <input class="fullName" id="fullName" type="text" placeholder="Full name" required><br/><br/>
                     <input class="CVC" id="CVC" type="number" placeholder="CVC code" required><br/><br/>
                     <input class="date" id="date" type="date" placeholder="Card date" required><br/><br/>
                     <button class="prev"><a href="secondStep.html">Previous</a></button>
-                    <button class="next" onclick="validateCardDetails()"><a id="link">Next</a></button>
+                    <button class="next" onclick="validateCardDetails()">Next</button>
                 </div>
 
             </div>
@@ -35,7 +35,6 @@
         </div>
     </div>
     <script type="text/javascript" src='thirdStep.js'></script>
-    <!-- <script type="module" src='thirdStep.js'></script> -->
 </body>
 
 </html>

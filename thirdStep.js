@@ -9,49 +9,42 @@ function validateCardDetails() {
     validateDate();
     if (cardNumber.className !== "invalidCardNumber" && fullName.className !== "invalidFullName" &&
         cvcCode.className !== "invalidCVC" && cardDate.className !== "invalidDate") {
-        document.write("Congrats! the registration was successful")
+        document.write("Congrats! the regicardNumberation was successful")
     }
+}
+
+function isNumberKey(event) {
+    let charCode = event.charCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57))
+        return false;
+    return true;
 }
 
 function validateCardNumber() {
-    let cardType = document.getElementById("divLogo");
-    let str = document.getElementById('cardNumber').value;
+    let cardNumberValue = cardNumber.value;
 
-    if (str.startsWith("4")) {
-        console.log(str);
-        let cardLogo = document.createElement("img");
-        cardLogo.className = "logo";
-        cardLogo.src = "images/Visa-Logo.png";
-        cardType.appendChild(cardLogo);
-    }
-    if (str.startsWith("5")) {
-        let cardLogo = document.createElement("img");
-        cardLogo.className = "logo";
-        cardLogo.src = "images/mastecard-logo.png";
-        cardType.appendChild(cardLogo);
-    }
-    if (str === "") {
-        cardType.removeChild(cardType.childNodes[3]);
+    if (cardNumberValue === "") {
+        cardNumber.style.backgroundImage = "url('')";
     }
 
-    str = str.replace(/\s/g, '');
-    if (str.length % 4 == 0) {
-        document.getElementById('cardNumber').value += " ";
+    if (cardNumberValue.startsWith("4")) {
+        cardNumber.style.backgroundImage = "url('images/Visa-Logo.png')";
+    } else if (cardNumberValue.startsWith("5")) {
+        cardNumber.style.backgroundImage = "url('images/mastecard-logo.png')";
     }
-    if (str.length > 15) {
-        cardNumber.disabled = true;
+
+    let cardNumberNewValue = cardNumberValue.split(" ").join("");
+    if (cardNumberNewValue.length > 0) {
+        cardNumberNewValue = cardNumberNewValue.match(new RegExp('.{1,4}', 'g')).join(" ");
     }
-    if (str.trim() !== "") {
-        if (!isNaN(Number(str.trim()))) {
-            cardNumber.className = "cardNumber";
-        } else {
-            cardNumber.className = "invalidCardNumber";
-        }
-    } else {
+    cardNumber.value = cardNumberNewValue;
+
+    if (cardNumberValue.length <= 19) {
         cardNumber.className = "cardNumber";
+    } else {
+        cardNumber.className = "invalidCardNumber";
     }
 }
-
 
 function validateFullName() {
     if (fullName.value.length > 100 || fullName.value.trim() === "") {
@@ -72,7 +65,7 @@ function validateCVC() {
 function validateDate() {
     let cardDate = document.getElementById("date");
     let now = new Date();
-    let today = `${now.getFullYear()}-${now.getMonth() + 1}-${now.getDate()}`
+    let today = `$ { now.getFullYear() } - $ { now.getMonth() + 1 } - $ { now.getDate() }`
     if (cardDate.value < today || cardDate.value === "") {
         cardDate.className = "invalidDate"
     } else {

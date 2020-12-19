@@ -12,8 +12,8 @@ function validateSecondStepFields() {
     if (email.className !== "invalidEmail" && pass.className !== "invalidPass" &&
         repPass.className !== "invalidPass" && standard.className !== "invalidRadio" &&
         premium.className !== "invalidRadio") {
-        let nextPage = document.getElementById("link");
-        nextPage.href = "thirdStep.html";
+        // window.location.pathname = '/Registration-Form/thirdStep.html';
+        window.location.pathname = window.location.pathname = '/C:/Users/Vardan/Desktop/Registration%20form/thirdStep.html';
     }
 }
 

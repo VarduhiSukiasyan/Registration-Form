@@ -723,6 +723,18 @@ let countryData = [{
     postal: /[0-9]{5}/g,
 }]
 
+function fillCountryList(countrySelectElement) {
+    countryData.forEach(country => {
+        let countryOption = document.createElement("option");
+        countryOption.value = country.name;
+        countryOption.innerHTML = country.name;
+        countrySelectElement.appendChild(countryOption);
+    })
+}
+
+fillCountryList(document.getElementById("country"));
+fillCountryList(document.getElementById("shippingCountry"));
+
 function validateInfo() {
     let fields = document.querySelectorAll('input[type = "text"]');
     fields.forEach(field => {
@@ -732,70 +744,54 @@ function validateInfo() {
             field.className = "info"
         }
     })
-    if (Array.from(fields).every(field => field.className === "info")) {
-        let nextPage = document.getElementById("link");
-        nextPage.href = "secondStep.html";
-    }
+
     validateCountry();
-}
 
-function countryList() {
-    let countrySelect = document.getElementById("country");
-    countryData.forEach(country => {
-        let countryOption = document.createElement("option");
-        countryOption.value = country.name;
-        countryOption.innerHTML = country.name;
-        countrySelect.appendChild(countryOption);
-    })
+    if (Array.from(fields).every(field => field.className === "info")) {
+        // window.location.pathname = '/Registration-Form/secondStep.html';
+        window.location.pathname = '/C:/Users/Vardan/Desktop/Registration%20form/secondStep.html';
+    }
 }
-countryList();
-
-function shippingCountryList() {
-    let shippingCountrySelect = document.getElementById("shippingCountry");
-    countryData.forEach(country => {
-        let countryOption = document.createElement("option");
-        countryOption.value = country.name;
-        countryOption.innerHTML = country.name;
-        shippingCountrySelect.appendChild(countryOption);
-    })
-}
-shippingCountryList();
 
 function validateCountry() {
     let postCode = document.getElementById("postCode");
     let shippingPostCode = document.getElementById("shippingPostCode");
     let countrySelect = document.getElementById("country");
     let shippingCountrySelect = document.getElementById("shippingCountry");
-    countryData.forEach(country => {
-        if (countrySelect.value === country.name) {
-            console.log(!!(postCode.value.match(country.postal)));
-            if (!!(postCode.value.match(country.postal))) {
-                postCode.className = "info";
-            } else {
-                postCode.className = "invalid";
-            }
-        }
-        if (shippingCountrySelect.value === country.name) {
-            if (!!(shippingPostCode.value.match(country.postal))) {
-                shippingPostCode.className = "info";
-            } else {
-                shippingPostCode.className = "invalid";
-            }
-        }
-    })
+
     if (countrySelect.value === "Choose your country") {
         countrySelect.className = "invalid"
+    } else {
+        countrySelect.className = "info";
+        validatePostcode(countrySelect, postCode);
     }
+
     if (shippingCountrySelect.value === "Choose shipping country") {
         shippingCountrySelect.className = "invalid"
     } else {
-        countrySelect.className = "countries";
-        shippingCountrySelect.className = "countries"
+        countrySelect.className = "info";
+        validatePostcode(shippingCountrySelect, shippingPostCode);
     }
 }
 
+function validatePostcode(countryElement, postCodeElement) {
+    let invalid = false;
 
-function useFillData() {
+    for (let i = 0; i < countryData.length; i++) {
+        let country = countryData[i];
+
+        if (countryElement.value === country.name) {
+            if (!!!(postCodeElement.value.match(country.postal))) {
+                invalid = true;
+                break;
+            }
+        }
+    }
+
+    postCodeElement.className = invalid ? "invalid" : "info";
+}
+
+function fillShippingData() {
     let fillData = document.getElementById("fillData");
     let country = document.getElementById("country");
     let city = document.getElementById("city");
@@ -806,6 +802,7 @@ function useFillData() {
     let shippingAddress = document.getElementById("shippingAddress");
     let shippingPostCode = document.getElementById("shippingPostCode");
     let shippingCountryOption = document.getElementById("choose");
+
     if (fillData.checked) {
         shippingCountry.value = country.value;
         shippingCity.value = city.value;

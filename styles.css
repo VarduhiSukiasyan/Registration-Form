@@ -95,6 +95,11 @@
     margin-left: 10%;
 }
 
+.next,
+.prev {
+    width: 90px;
+}
+
 .step {
     font-size: x-large;
 }
@@ -149,9 +154,15 @@ a {
 .invalidCardNumber {
     height: 20px;
     margin: 0;
-    padding-right: 30px;
     width: 100%;
     text-align: left;
+}
+
+.cardNumber {
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: 30px;
+    padding-right: 20px;
 }
 
 .logo {
